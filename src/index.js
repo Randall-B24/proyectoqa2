@@ -30,7 +30,7 @@ app.use(methodOverride('_method'));
 //Routes
 
 app.use(require('./routes/index'));
-app.use(require('./routes/videos'));
+app.use(require('./routes/youtube'));
 
 //Statics
 
