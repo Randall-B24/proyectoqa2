@@ -1,0 +1,64 @@
+<input id="txtUrl" style="width: 82%;" placeholder="Ingresa el link" name="url" type="text" class="form-control" />
+
+<div>
+<br />
+<form method="post" target="browser" runat="server">
+<input type="button" value="Probar" onclick="LinkYT(); "
+class="btn btn-primary btn-block" style= "position: fixed; bottom: 89%; right: 10%; width: 100px;"/>
+<br />
+</form>
+</div>
+
+<div>
+<form method="post" target="browser" runat="server">
+<input type="button" value="Agregar" onclick="LinkYT(); "
+class="btn btn-primary btn-block" style= "position: fixed; bottom: 15%; right: 10%; width: 100px;"/>
+</form>
+</div>
+
+<div>
+<form method="post" target="browser" runat="server">
+<input type="button" value="Eliminar" onclick="LinkYT(); "
+class="btn btn-primary btn-block" style= "position: fixed; bottom: 5%; right: 10%; width: 100px;"/>
+</form>
+</div>
+
+<div class = "col-md-2" style= "position: fixed; right: 10%;">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title d-flex justify-content-between align-items-center">
+                Datos
+            </h4>
+                <p>Titulo: </p>
+                <p>Emisor: </p>  
+                <p>Duracion: </p>                
+        </div>
+    </div>
+</div>
+
+<br />
+<iframe id="browser" name="browser" src="http://static.betazeta.com/www.fayerwayer.com/up/2011/09/youtube-logo-650x350.jpg" scrolling="yes" height="350" width="650"></iframe>
+</div>
+
+<br />
+<br />
+<input id="txtListaReproduccion" style="width: 45%;" placeholder="Ingrese algo" name="listaReproduccion" type="text" class="form-control" />
+
+<script type="text/javascript">
+    debugger
+    function LinkYT() {
+    if (document.getElementById("txtUrl").value.replace('watch?v=', 'embed/') == "")
+    { 
+    alert("Ingrese un link"); 
+    }
+    else
+    var browserFrame = document.getElementById("browser");
+    browserFrame.src = document.getElementById("txtUrl").value.replace('watch?v=', 'embed/');
+    return browserFrame.src;
+    }
+</script>
+
+
+
+
+
