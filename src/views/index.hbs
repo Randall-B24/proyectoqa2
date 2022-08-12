@@ -7,7 +7,7 @@
 <div>
 <br />
 <form method="post" target="browser" runat="server">
-<input type="button" value="Buscar" onclick="LinkYT(); "
+<input type="button" value="Buscar" onclick="BusquedaYT(); "
 class="btn btn-primary btn-block" style= "position: fixed; bottom: 89%; right: 10%; width: 100px;"/>
 <br />
 </form>
@@ -22,6 +22,36 @@ class="btn btn-primary btn-block" style= "position: fixed; bottom: 89%; right: 1
 </br>
 </br>
 <a href= "http://localhost:3000/gestionBiblioteca" class="btn btn-primary btn-lg">Listas de Reproducción</a>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="script.js"></script>
+<div class = "row"
+    <div class = "col-md-12">
+        <div id = "videos">
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    debugger
+    function BusquedaYT() {
+        var API_KEY = "AIzaSyC0-N_PiUe-GoKbCCDSJPB_KG-SK53SE-s"
+        var browser = getElementById("txtNombre")
+        console.log(browser);
+        var video = ''
+        var videos = $("#videos")
+            $.get("https://www.googleapis.com/youtube/v3/search?key="+ API_KEY + "&type=video&part=snippet&maxResults=10&q=" + browser)
+            console.log(data)
+
+            data.items.forEach(item => {
+             video = `<iframe width = "420" height = "315" src = "http://www.youtube.com/embed/${item.id.videoId}" frameborder = "0" allowfullscreen></iframe>`
+             //video.append
+
+             $("#videos").append(video)
+            })
+        }   
+
+</script>
 
 
 
