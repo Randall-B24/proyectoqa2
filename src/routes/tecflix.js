@@ -5,6 +5,10 @@ router.get('/gestionBiblioteca', (req,res) => {
     res.render("gestionBiblioteca.hbs");
 });
 
+router.get('/prueba', (req,res) => {
+    res.render("prueba.hbs");
+});
+
 /*
 router.post('/youtube/mostrarVideo', (req,res) =>{
     const {url}= req.body;

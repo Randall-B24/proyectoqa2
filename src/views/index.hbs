@@ -1,56 +1,71 @@
+<!DOCTYPE html>
+<html>
+
 </br>
 </br>
 </br>
 
-<input id="txtNombre" style=" position: fixed; bottom: 89%; width: 50%; right: 20%;" placeholder="Nombre Video" name="nombre" type="text" class="form-control" />
+<div class="container">
+    <form id="form" >
+        <div class="form-group">
+            <input class="form-control" type="text" id="search" style=" position: fixed; bottom: 89%; width: 50%; right: 20%;" placeholder="Nombre Video" required>
+        </div>
 
-<div>
-<br />
-<form method="post" target="browser" runat="server">
-<input type="button" value="Buscar" onclick="BusquedaYT(); "
-class="btn btn-primary btn-block" style= "position: fixed; bottom: 89%; right: 10%; width: 100px;"/>
-<br />
-</form>
-</div>
+        <div class="form-group">
+            <input class="btn btn-primary btn-block" type="submit" value="Buscar" style= "position: fixed; bottom: 89%; right: 10%; width: 100px;">
+        </div>
+    </form>
+    </br>
+    <a style= "position: fixed; bottom: 75%; right: 70%; width: 300px;" href= "http://localhost:3000/gestionBiblioteca" class="btn btn-primary btn-lg">Gestión Biblioteca</a>
+    <a style= "position: fixed; bottom: 75%; right: 45%; width: 300px;" href= "http://localhost:3000/gestionBiblioteca" class="btn btn-primary btn-lg">Visualización Biblioteca</a>
+    <a style= "position: fixed; bottom: 75%; right: 20%; width: 300px;" href= "http://localhost:3000/gestionBiblioteca" class="btn btn-primary btn-lg">Listas de Reproducción </a>
+    </br>
+    </br>
+    </br>
 
-<a href= "http://localhost:3000/gestionBiblioteca" class="btn btn-primary btn-lg">Gestión Biblioteca</a>
-</br>
-</br>
-</br>
-<a href= "http://localhost:3000/gestionBiblioteca" class="btn btn-primary btn-lg">Visualización Biblioteca</a>
-</br>
-</br>
-</br>
-<a href= "http://localhost:3000/gestionBiblioteca" class="btn btn-primary btn-lg">Listas de Reproducción</a>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="videos">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="script.js"></script>
-<div class = "row"
-    <div class = "col-md-12">
-        <div id = "videos">
+            </div>
         </div>
     </div>
 </div>
 
-<script type="text/javascript">
-    debugger
-    function BusquedaYT() {
-        var API_KEY = "AIzaSyC0-N_PiUe-GoKbCCDSJPB_KG-SK53SE-s"
-        var browser = getElementById("txtNombre")
-        console.log(browser);
-        var video = ''
-        var videos = $("#videos")
-            $.get("https://www.googleapis.com/youtube/v3/search?key="+ API_KEY + "&type=video&part=snippet&maxResults=10&q=" + browser)
-            console.log(data)
 
-            data.items.forEach(item => {
-             video = `<iframe width = "420" height = "315" src = "http://www.youtube.com/embed/${item.id.videoId}" frameborder = "0" allowfullscreen></iframe>`
-             //video.append
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</html>
 
-             $("#videos").append(video)
-            })
-        }   
+<script>
+  $(document).ready(function () {
+    var API_KEY = "AIzaSyC0-N_PiUe-GoKbCCDSJPB_KG-SK53SE-s";
 
+    var video = ''
+
+    $("#form").submit(function(event){
+        event.preventDefault()
+
+        var search = $("#search").val()
+
+        videosSearch(API_KEY,search,12)
+
+    })
+
+    function videosSearch(key, search, maxResults){
+      document.getElementById("videos").innerHTML = "";
+      $.get("https://www.googleapis.com/youtube/v3/search?key=" + key
+      + "&type=video&part=snippet&maxResults=" + maxResults + "&q=" + search, function(data){
+        console.log(data)
+
+        data.items.forEach(item => {
+	    console.log(item.id.videoId)
+	    video = `<iframe width="410" height="315" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>`
+            $("#videos").append(video)
+        });
+      })
+    }
+  }
+);
 </script>
 
 
