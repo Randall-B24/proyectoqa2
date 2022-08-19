@@ -9,6 +9,11 @@ router.get('/prueba', (req,res) => {
     res.render("prueba.hbs");
 });
 
+router.get('/visualizacionBiblioteca', (req,res) => {
+    res.render("visualizacionBiblioteca.hbs");
+});
+
+
 /*
 router.post('/youtube/mostrarVideo', (req,res) =>{
     const {url}= req.body;

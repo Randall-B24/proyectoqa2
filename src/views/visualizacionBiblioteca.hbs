@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+</br>
+</br>
+</br>
+
+<div class="container">
+    <form id="form" >
+        <div class="form-group">
+            <input class="form-control" type="text" id="search" style=" position: fixed; bottom: 89%; width: 50%; right: 20%;" placeholder="Nombre PlayList" required>
+        </div>
+
+        <div class="form-group">
+            <input class="btn btn-primary btn-block" type="submit" value="Buscar" style= "position: fixed; bottom: 89%; right: 10%; width: 100px;">
+        </div>
+    </form>
+
+    <div class = "col-md-3" style= "position: fixed; right: 10%;">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title d-flex justify-content-between align-items-center">
+                    Nombre PlayList
+                </h4>
+                <div id = "nombreListas">
+                </div>                
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div id="videos">
+
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <form method="post" target="browser" runat="server">
+            <input type="button" value="Eliminar" onclick="LinkYT(); "
+            class="btn btn-primary btn-block" style= "position: fixed; bottom: 5%; right: 10%; width: 100px;"/>
+        </form>
+    </div>
+
+    <input id="txtListaReproduccion" style= "position: fixed; bottom: 5%; right: 20%; width: 50%" placeholder="nombre cancion" name="listaReproduccion" type="text" class="form-control" />
+</div>

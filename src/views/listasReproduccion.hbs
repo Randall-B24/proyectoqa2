@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+</br>
+</br>
+</br>
+
+<div class="container">
+    <form id="form" >
+        <div class="form-group">
+            <input class="form-control" type="text" id="search" style=" position: fixed; bottom: 89%; width: 50%; right: 20%;" placeholder="Link Video" required>
+        </div>
+
+        <div class="form-group">
+            <input class="btn btn-primary btn-block" type="submit" value="Buscar" style= "position: fixed; bottom: 89%; right: 10%; width: 100px;">
+        </div>
+    </form>
+
+    <div class = "col-md-3" style= "position: fixed; right: 10%;">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title d-flex justify-content-between align-items-center">
+                    Listas Reproduccion
+                </h4>
+                <div id = "datosVideo">
+    
+                </div>                
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div id="videos">
+
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <form method="post" target="browser" runat="server">
+            <input type="button" value="Agregar" onclick="LinkYT(); "
+            class="btn btn-primary btn-block" style= "position: fixed; bottom: 15%; right: 10%; width: 100px;"/>
+        </form>
+    </div>
+
+    <div>
+        <form method="post" target="browser" runat="server">
+            <input type="button" value="Eliminar" onclick="LinkYT(); "
+            class="btn btn-primary btn-block" style= "position: fixed; bottom: 5%; right: 10%; width: 100px;"/>
+        </form>
+    </div>
+
+    <input id="txtListaReproduccion" style= "position: fixed; bottom: 5%; right: 20%; width: 50%" placeholder="Nombre Playlist" name="listaReproduccion" type="text" class="form-control" />
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</html>
+
+<script>
+  $(document).ready(function () {
+    var API_KEY = "AIzaSyC0-N_PiUe-GoKbCCDSJPB_KG-SK53SE-s";
+    var video = ''
+    var datos = ''
+
+    $("#form").submit(function(event){
+        event.preventDefault()
+
+        var search = $("#search").val()
+
+        var id = search[32] + search[33] + search[34] + search[35] + search[36] + search[37] + search[38] + search[39] + search[40] + search[41] + search[42]
+
+        console.log("Link:" + search, "   ID:" + id)
+
+        videosSearch(API_KEY,id)
+
+    })
+
+    function videosSearch(key, id){
+      document.getElementById("videos").innerHTML = "";
+      
+      $.get("https://www.googleapis.com/youtube/v3/videos?&type=video&part=snippet&id=" + id + "&key=" + key, function(data){
+        console.log(data)
+
+        data.items.forEach(item => {
+            console.log(item.snippet.channelTitle)
+            console.log(item.snippet.title)
+            console.log(item.snippet.description)
+            datos = `<p contenteditable="true">Titulo: ${item.snippet.title}</p>
+                    <p contenteditable="true">Emisor: ${item.snippet.channelTitle}</p>  
+                    <p contenteditable="true">ID: ${item.id}</p>`
+            video = `<iframe width="750" height="500" src="https://www.youtube.com/embed/${id}" frameborder="0" allowfullscreen></iframe>`
+            $("#videos").append(video)
+            document.getElementById("datosVideo").innerHTML = "";
+            $("#datosVideo").append(datos)
+        });
+      })
+    }
+  }
+);
+</script>
+
+
+
+
+
+
