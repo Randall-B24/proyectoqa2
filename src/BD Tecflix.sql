@@ -42,6 +42,11 @@ on delete cascade
 on update cascade
 );
 
-insert into values;
+insert into Multimedia values(1,'https://www.youtube.com/watch?v=eIjbSH3Imb8','Prueba','Pedro' ,'10:30');
+insert into Multimedia values(2,'https://www.youtube.com/watch?v=jqBuXibX9CM','Prueba','Pedro' ,'10:30');
+
+select * from Multimedia;
+
+
 
 
