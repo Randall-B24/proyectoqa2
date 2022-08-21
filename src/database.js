@@ -8,7 +8,7 @@ const pool = createPool({
     connectionLimit: 5
 });
 
-pool.query("select * from Multimedia", (err, result, fields) => {
+pool.query("select link from Multimedia", (err, result, fields) => {
     if(err){
         return console.log(err);
     }
