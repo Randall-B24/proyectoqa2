@@ -1,17 +1,11 @@
-const  {createPool } = require('mysql');
+const mysql = require('mysql');
 
-const pool = createPool({
+const connection = mysql.createConnection({
     host: "localhost",
     user:"root",
-    password: "root",
+    password: "123456",
     database: "tecflix",
     connectionLimit: 5
 });
 
-pool.query("select * from Multimedia", (err, result, fields) => {
-    if(err){
-        return console.log(err);
-    }
-    return console.log(result);
-})
-
+module.exports = connection;

@@ -19,11 +19,11 @@
     <div class = "col-md-3" style= "position: fixed; right: 10%;">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title d-flex justify-content-between align-items-center">
-                    Nombre PlayList
-                </h4>
-                <div id = "nombreListas">
-                </div>                
+                <h4 class="card-title d-flex justify-content-between align-items-center", id="Prueba">
+                    {{#each rows}}
+                        <p>{{emisor}}</p>
+                    {{/each}}
+                </h4>              
             </div>
         </div>
     </div>
