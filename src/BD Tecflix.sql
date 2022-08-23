@@ -2,12 +2,10 @@ create database tecflix;
 use tecflix;
 
 create table Multimedia (
-id_video int auto_increment primary key,
+id_video varchar(12) primary key,
 link varchar(300),
 titulo varchar(32) not null,
 emisor varchar(32) not null,
-duracion varchar(32) not null
-
 );
 
 create table ListaReproduccion (
@@ -21,7 +19,7 @@ nombre varchar(32)
 );
 
 create table Lista_Video(
-id_video int,
+id_video varchar(12),
 id_lista int,
 foreign key (id_video) references Multimedia(id_video)
 on delete cascade
