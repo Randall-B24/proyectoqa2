@@ -7,24 +7,32 @@ connection.connect( (err) =>{
     console.log("La conexion funciona...")
 })
 
-router.get('/gestionBiblioteca', (req,res) => {
-    res.render("gestionBiblioteca.hbs");
-});
+router.get('/gestionBiblioteca',  async (req,res) => {
+    connection.query('SELECT nombre from ListaReproduccion;', (err, rows) =>{
+        if (err) throw err
+        connection.end;
+        res.render("gestionBiblioteca.hbs", {rows});
+    })
+})
 
 router.get('/prueba', (req,res) => {
     res.render("prueba.hbs");
 });
 
-/*
-router.get('/visualizacionBiblioteca', async (req,res) => {
-    res.render("visualizacionBiblioteca.hbs",{datos});
-});*/
+router.get('/visualizacionBiblioteca', async (req,res) =>{
+    res.render("visualizacionBiblioteca.hbs");
+});
 
-router.get('/visualizacionBiblioteca', async (req,res) => {
-    connection.query('SELECT * from Multimedia', (err, rows) =>{
+router.get('/listasReproduccion', async (req,res) =>{
+    res.render("listasReproduccion.hbs");
+});
+
+router.post('/visualizacionBiblioteca/buscar', async (req,res) =>{
+    const {playList} = req.body;
+    console.log(playList);
+    connection.query("Select id_video,titulo_video from Lista_Video JOIN ListaReproduccion on id_video = Lista_Video.id_video where nombre =" + "'" +playList +"'" +";", (err, rows) =>{
         if (err) throw err
         connection.end;
-        //console.log(rows[0].emisor);
         res.render("visualizacionBiblioteca.hbs",{rows});
     })
 });

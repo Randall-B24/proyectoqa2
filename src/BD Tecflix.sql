@@ -48,5 +48,10 @@ insert into Multimedia values(2,'https://www.youtube.com/watch?v=jqBuXibX9CM','P
 select * from Multimedia;
 
 
+use tecflix;
+insert into listaReproduccion values(1,'lista1');
+insert into listaReproduccion values(2,'lista2');
+
+
 
 
