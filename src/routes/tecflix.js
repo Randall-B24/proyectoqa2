@@ -19,18 +19,32 @@ router.get('/prueba', (req,res) => {
     res.render("prueba.hbs");
 });
 
-router.get('/visualizacionBiblioteca', async (req,res) =>{
-    res.render("visualizacionBiblioteca.hbs");
+router.get('/prueba2', async (req,res) =>{
+    res.render("prueba2.hbs");
 });
 
 router.get('/listasReproduccion', async (req,res) =>{
     res.render("listasReproduccion.hbs");
 });
 
+router.post('/listasReproduccion/buscar', async (req,res) =>{
+    const {playList} = req.body;
+    console.log(playList);
+    connection.query("Select id_video from Lista_Video JOIN ListaReproduccion on id_video = Lista_Video.id_video where nombre =" + "'" +playList +"'" +";", (err, rows) =>{
+        if (err) throw err
+        connection.end;
+        res.render("listasReproduccion.hbs",{rows});
+    })
+});
+
+router.get('/visualizacionBiblioteca', async (req,res) =>{
+    res.render("visualizacionBiblioteca.hbs");
+});
+
 router.post('/visualizacionBiblioteca/buscar', async (req,res) =>{
     const {playList} = req.body;
     console.log(playList);
-    connection.query("Select id_video,titulo_video from Lista_Video JOIN ListaReproduccion on id_video = Lista_Video.id_video where nombre =" + "'" +playList +"'" +";", (err, rows) =>{
+    connection.query("Select id_video from Lista_Video JOIN ListaReproduccion on id_video = Lista_Video.id_video where nombre =" + "'" +playList +"'" +";", (err, rows) =>{
         if (err) throw err
         connection.end;
         res.render("visualizacionBiblioteca.hbs",{rows});

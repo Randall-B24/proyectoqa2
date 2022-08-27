@@ -1,0 +1,106 @@
+
+<script src="https://www.youtube.com/player_api"></script>
+<div id="video-youtube1" style= "position: fixed; bottom: 40%; right: 50%;"> </div>
+<div id="video-youtube2" style= "position: fixed; bottom: 40%; right: 50%;"></div>
+<div id="video-youtube3"></div>
+<div id="video-youtube4"></div>
+<div id="video-youtube5"></div>
+<div id="video-youtube5"></div>
+<div id="video-youtube6"></div>
+<div id="video-youtube7"></div>
+<div id="video-youtube8"></div>
+<div id="video-youtube9"></div>
+<div id="video-youtube10"></div>
+
+<script>;
+
+var i =1;
+var nombreId = "video-youtube";
+var Id = "";
+var player;
+
+function onYouTubePlayerAPIReady() {
+    Id = nombreId + i.toString();
+    i = i + 1;
+    console.log(Id);
+    player = new YT.Player(Id, {
+      height: '315',
+      width: '560',
+      videoId: 'kqEfoD9XYHQ',
+      events: {
+        'onReady': onAutoPlay,
+        'onStateChange': onFinish
+      }
+    });
+}
+
+function onAutoPlay(event) {
+    event.target.playVideo();
+}
+
+function onFinish(event) {        
+    if(event.data === 0) { 
+    Id = nombreId + i.toString();
+    i = i + 1;
+    player = new YT.Player(Id, {
+      height: '315',
+      width: '560',
+      videoId: 'EYpV-Qe5qGY',
+      events: {
+        'onReady': onAutoPlay,
+        'onStateChange': onFinish2
+      }
+    });
+
+    console.log("Sirve", );    
+    }
+}
+
+function onFinish2(event) {        
+    if(event.data === 0) { 
+    delete player2.videoId;
+    delete player2;
+    var node = document.getElementById('video-youtube');
+    while (node.hasChildNodes()) {
+        node.removeChild(node.firstChild);
+    }
+    player = new YT.Player('video-youtube3', {
+      height: '315',
+      width: '560',
+      videoId: 'kqEfoD9XYHQ',
+      events: {
+        'onReady': onAutoPlay,
+        'onStateChange': onFinish3
+      }
+    });
+
+    console.log("Sirve", player.videoId);    
+    }
+}
+
+function onFinish3(event) {        
+    if(event.data === 0) { 
+    delete player2.videoId;
+    delete player2;
+    var node = document.getElementById('video-youtube');
+    while (node.hasChildNodes()) {
+        node.removeChild(node.firstChild);
+    }
+    player = new YT.Player('video-youtube3', {
+      height: '350',
+      width: '300',
+      videoId: 'kqEfoD9XYHQ',
+      events: {
+        'onReady': onAutoPlay,
+        'onStateChange': onFinish
+      }
+    });
+
+    console.log("Sirve", player.videoId);    
+    }
+}
+
+
+</script>
+
+
