@@ -18,23 +18,22 @@ nombre varchar(32) primary key
 
 create table Lista_Video(
 id_video varchar(12),
-nombre varchar(32),
-posicion_video int auto_increment,
+nombre_lista varchar(32),
 foreign key (id_video) references Multimedia(id_video)
 on delete cascade
 on update cascade,
-foreign key (nombre) references ListaReproduccion(nombre)
+foreign key (nombre_lista) references ListaReproduccion(nombre)
 on delete cascade
 on update cascade
 );
 
 create table Cola_Video(
 id_video varchar(12),
-nombre varchar(32),
+nombre_cola varchar(32),
 foreign key (id_video) references Multimedia(id_video)
 on delete cascade
 on update cascade,
-foreign key (nombre) references ColaReproduccion(nombre)
+foreign key (nombre_cola) references ColaReproduccion(nombre)
 on delete cascade
 on update cascade
 );
@@ -48,10 +47,16 @@ select * from Multimedia;
 insert into ListaReproduccion values ('prueba1');
 insert into ListaReproduccion values ('prueba2');
 
-insert into Lista_Video values ('jqBuXibX9CM', 1);
-insert into Lista_Video values ('eIjbSH3Imb8', 2);
+insert into Lista_Video values ('jqBuXibX9CM', 'prueba1');
+insert into Lista_Video values ('eIjbSH3Imb8', 'prueba2');
 
 select * from Lista_Video;
 
 Select LV.id_video, titulo from Lista_Video as LV JOIN ListaReproduccion as LR on LV.id_lista = LR.id_lista JOIN Multimedia as M on M.id_video = LV.id_video WHERE nombre = 'prueba2';
+insert into ListaReproduccion values ('prueba3');
 
+insert into Multimedia values (?, ?, ?, ?);
+insert into Lista_Video values ('ID_VIDEO', 'NOMBRE_PLAYLIST');
+
+alter table Multimedia 
+modify link varchar(100);
