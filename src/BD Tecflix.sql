@@ -9,34 +9,32 @@ emisor varchar(32) not null
 );
 
 create table ListaReproduccion (
-id_lista int primary key auto_increment,
-nombre varchar(32)
+nombre varchar(32) primary key
 );
 
 create table ColaReproduccion ( 
-id_cola int primary key auto_increment,
-nombre varchar(32)
+nombre varchar(32) primary key
 );
 
 create table Lista_Video(
 id_video varchar(12),
-id_lista int,
+nombre varchar(32),
 posicion_video int auto_increment,
 foreign key (id_video) references Multimedia(id_video)
 on delete cascade
 on update cascade,
-foreign key (id_lista) references ListaReproduccion(id_lista)
+foreign key (nombre) references ListaReproduccion(nombre)
 on delete cascade
 on update cascade
 );
 
 create table Cola_Video(
 id_video varchar(12),
-id_cola int,
+nombre varchar(32),
 foreign key (id_video) references Multimedia(id_video)
 on delete cascade
 on update cascade,
-foreign key (id_cola) references ColaReproduccion(id_cola)
+foreign key (nombre) references ColaReproduccion(nombre)
 on delete cascade
 on update cascade
 );
@@ -47,8 +45,8 @@ insert into Multimedia values('jqBuXibX9CM','https://www.youtube.com/watch?v=jqB
 select * from Multimedia;
 
 
-insert into ListaReproduccion values (1, 'prueba1');
-insert into ListaReproduccion values (2, 'prueba2');
+insert into ListaReproduccion values ('prueba1');
+insert into ListaReproduccion values ('prueba2');
 
 insert into Lista_Video values ('jqBuXibX9CM', 1);
 insert into Lista_Video values ('eIjbSH3Imb8', 2);
