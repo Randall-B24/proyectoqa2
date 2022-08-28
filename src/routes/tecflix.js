@@ -15,6 +15,17 @@ router.get('/gestionBiblioteca',  async (req,res) => {
     })
 })
 
+router.post('/gestionBiblioteca/agregar', async (req,res) =>{
+    const {linkName, idVideoName, emisorName, tituloName, txtListaReproduccionName} = req.body;
+    console.log(txtListaReproduccionName);
+
+    connection.query('SELECT nombre from ListaReproduccion;', (err, rows) =>{
+        if (err) throw err
+        connection.end;
+        res.render("gestionBiblioteca.hbs", {rows});
+    })
+});
+
 router.get('/prueba', (req,res) => {
     res.render("prueba.hbs");
 });
