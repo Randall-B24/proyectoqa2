@@ -4,7 +4,7 @@ use tecflix;
 create table Multimedia (
 id_video varchar(12) primary key,
 link varchar(300),
-titulo varchar(32) not null,
+titulo varchar(200) not null,
 emisor varchar(32) not null
 );
 
@@ -52,7 +52,7 @@ insert into Lista_Video values ('eIjbSH3Imb8', 'prueba2');
 
 select * from Lista_Video;
 
-Select LV.id_video, titulo from Lista_Video as LV JOIN ListaReproduccion as LR on LV.id_lista = LR.id_lista JOIN Multimedia as M on M.id_video = LV.id_video WHERE nombre = 'prueba2';
+Select LV.id_video, titulo from Lista_Video as LV JOIN ListaReproduccion as LR on LV.nombre_lista = LR.nombre JOIN Multimedia as M on M.id_video = LV.id_video WHERE nombre = 'prueba4';
 insert into ListaReproduccion values ('prueba3');
 
 insert into Multimedia values (?, ?, ?, ?);

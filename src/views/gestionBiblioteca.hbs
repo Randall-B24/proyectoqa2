@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     
@@ -9,107 +10,48 @@
 </br>
 
 <div class="container">
-    <form id="busqueda" >
+    <form action="/gestionBiblioteca/eliminar" method ="POST">
         <div class="form-group">
-            <input class="btn btn-primary btn-block" type="submit" value="Buscar" style= "position: fixed; bottom: 89%; right: 10%; width: 100px;">
+            <button type="submit" class= "btn btn-primary btn-block" style= "position: fixed; bottom: 5%; right: 10%; width: 100px;">
+                Eliminar
+            </button>
         </div>
+        <select contenteditable = "true" name = "txtListaReproduccionEliminarName" id="txtListaReproduccionEliminar" style= "position: fixed; bottom: 5%; right: 20%; width: 50%">
+        {{#each rows}}
+            <option value="{{nombre}}"> {{nombre}}</option>
+        {{/each}}
+        </select>
     </form>
 
-    <div class="row">
-        <div class="col-md-12">
-            <div id="videos">
-
-            </div>
-        </div>
-    </div>
-
     <form action="/gestionBiblioteca/agregar" method ="POST">
-        <div class="form-group">
-            <input name = "linkName" class="form-control" type="text" id="search" style=" position: fixed; bottom: 89%; width: 50%; right: 20%;" placeholder="Nombre Video" required>
-        </div>
-
         <div class="form-group">
             <button type="submit" class= "btn btn-primary btn-block" style= "position: fixed; bottom: 15%; right: 10%; width: 100px;">
                 Agregar
             </button>
         </div>
 
-        <select name = "txtListaReproduccionName" id="txtListaReproduccion" style= "position: fixed; bottom: 5%; right: 20%; width: 50%">
+        <select contenteditable = "true" name = "txtListaReproduccionAgregarName" id="txtListaReproduccionAgregar" style= "position: fixed; bottom: 15%; right: 20%; width: 50%">
         {{#each rows}}
             <option value="{{nombre}}"> {{nombre}}</option>
         {{/each}}
         </select>
-        
-        <div class = "col-md-3" style=" position: fixed; bottom: 75%; width: 25%; right: 10%;">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title d-flex justify-content-between align-items-center">
-                    Datos
-                </h4>
-                    <input name= "tituloName" class="form-control" type="text" id="titulo" style=" position: fixed; bottom: 70%; width: 25%; right: 10%;" placeholder="Titulo" placeholder="Titulo" required>
-                    <input name= "emisorName" class="form-control" type="text" id="emisor" style=" position: fixed; bottom: 65%; width: 25%; right: 10%;" placeholder="Emisor" required>
-                    <input name= "idVideoName" class="form-control" type="text" id="idVideo" style=" position: fixed; bottom: 60%; width: 25%; right: 10%;" placeholder="ID" required>
-                </div>                
-            </div>
-        </div>
     </form>
 
-    <div>
-        <form method="post" target="browser" runat="server">
-            <input type="button" value="Eliminar" onclick="LinkYT(); "
-            class="btn btn-primary btn-block" style= "position: fixed; bottom: 5%; right: 10%; width: 100px;"/>
-        </form>
-    </div>
-
 </div>
+
+<form action="/gestionBiblioteca/agregarPlaylist" method ="POST">
+    <div class="form-group">
+        <button type="submit" class= "btn btn-primary btn-block" style= "position: fixed; bottom: 5%; right: 72%; width: 170px;">
+            Agregar Playlist
+        </button>
+    </div>
+    <input name= "NombrePlaylist" class="form-control" type="text" id="NombrePlaylist" style="position: fixed; bottom: 5%; right: 85%; width: 12%;" placeholder="Nueva Playlist">
+</form>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </html>
 
-<script>
-  $(document).ready(function () {
-    var API_KEY = "AIzaSyC0-N_PiUe-GoKbCCDSJPB_KG-SK53SE-s";
-    var video = ''
-    var datos = ''
-
-    $("#busqueda").submit(function(event){
-        event.preventDefault()
-
-        var search = $("#search").val()
-
-        var id = search[32] + search[33] + search[34] + search[35] + search[36] + search[37] + search[38] + search[39] + search[40] + search[41] + search[42]
-
-        console.log("Link:" + search, "   ID:" + id)
-
-        videosSearch(API_KEY,id)
-
-    })
-
-    function videosSearch(key, id){
-      document.getElementById("videos").innerHTML = "";
-      
-      $.get("https://www.googleapis.com/youtube/v3/videos?&type=video&part=snippet&id=" + id + "&key=" + key, function(data){
-        console.log(data)
-
-        data.items.forEach(item => {
-
-            datos = item.snippet.title
-            $("#titulo").val(datos) 
-            datos =item.snippet.channelTitle
-            $("#emisor").val(datos) 
-            datos = item.id
-            $("#idVideo").val(datos) 
-
-            video = `<iframe width="750" height="500" src="https://www.youtube.com/embed/${id}" frameborder="0" allowfullscreen></iframe>`
-            $("#videos").append(video)
-        });
-      })
-    }
-  }
-);
-</script>
-
-
+ 
 
 
 

@@ -9,7 +9,7 @@
 
 <div class="container">
     <form action="/visualizacionBiblioteca/buscar" method ="POST">
-        <input name= "playList" class="form-control" type="text" id="search" style=" position: fixed; bottom: 89%; width: 50%; right: 20%;" placeholder="Nombre PlayList" required>
+        <input name= "playList" class="form-control" type="text" id="search" style=" position: fixed; bottom: 89%; width: 50%; right: 20%;" value= {{playList}} required>
         <div class="form-group">
             <button type="submit" class= "btn btn-primary btn-block" style= "position: fixed; bottom: 89%; right: 10%; width: 100px;">
                 Buscar
@@ -21,11 +21,9 @@
     <div class = "col-md-3" style= "position: fixed; right: 10%;">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title d-flex justify-content-between align-items-center", id="Prueba">
-                    {{#each rows}}
-                        <p>{{titulo_video}}</p>
-                    {{/each}}
-                </h4>              
+                {{#each rows}}
+                    <p>{{titulo}}</p>
+                {{/each}}            
             </div>
         </div>
     </div>
