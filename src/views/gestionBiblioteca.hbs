@@ -9,46 +9,62 @@
 </br>
 </br>
 
-<div class="container">
-    <form action="/gestionBiblioteca/eliminar" method ="POST">
-        <div class="form-group">
-            <button type="submit" class= "btn btn-primary btn-block" style= "position: fixed; bottom: 5%; right: 10%; width: 100px;">
-                Eliminar
-            </button>
-        </div>
-        <select contenteditable = "true" name = "txtListaReproduccionEliminarName" id="txtListaReproduccionEliminar" style= "position: fixed; bottom: 5%; right: 20%; width: 50%">
-        {{#each rows}}
-            <option value="{{nombre}}"> {{nombre}}</option>
-        {{/each}}
-        </select>
-    </form>
+<h2 style= "position: fixed; bottom: 75%; right: 76;"> Agregar a Playlist</h2>
 
-    <form action="/gestionBiblioteca/agregar" method ="POST">
-        <div class="form-group">
-            <button type="submit" class= "btn btn-primary btn-block" style= "position: fixed; bottom: 15%; right: 10%; width: 100px;">
-                Agregar
-            </button>
-        </div>
+<form action="/gestionBiblioteca/agregar" method ="POST">
 
-        <select contenteditable = "true" name = "txtListaReproduccionAgregarName" id="txtListaReproduccionAgregar" style= "position: fixed; bottom: 15%; right: 20%; width: 50%">
-        {{#each rows}}
-            <option value="{{nombre}}"> {{nombre}}</option>
-        {{/each}}
-        </select>
-    </form>
+    <select contenteditable = "true" name = "txtIdVideoAgregarName" id="txtIdVideoAgregar" style= "position: fixed; bottom: 67%; right: 42%; width: 50%">
+    {{#each rows2}}
+        <option value="{{id_video}}"> {{id_video}}</option>
+    {{/each}}
+    </select>
 
-</div>
+    <div class="form-group">
+        <button type="submit" class= "btn btn-primary btn-block" style= "position: fixed; bottom: 60%; right: 30%; width: 100px;">
+            Agregar
+        </button>
+    </div>
+
+    <select contenteditable = "true" name = "txtListaReproduccionAgregarName" id="txtListaReproduccionAgregar" style= "position: fixed; bottom: 60%; right: 42%; width: 50%">
+    {{#each rows1}}
+        <option value="{{nombre}}"> {{nombre}}</option>
+    {{/each}}
+    </select>
+</form>
+
+<h4 style= "position: fixed; bottom: 50%; right: 76%;"> Agregar Nueva Playlist</h4>
 
 <form action="/gestionBiblioteca/agregarPlaylist" method ="POST">
     <div class="form-group">
-        <button type="submit" class= "btn btn-primary btn-block" style= "position: fixed; bottom: 5%; right: 72%; width: 170px;">
+        <button type="submit" class= "btn btn-primary btn-block" style= "position: fixed; bottom: 42%; right: 65%; width: 170px;">
             Agregar Playlist
         </button>
     </div>
-    <input name= "NombrePlaylist" class="form-control" type="text" id="NombrePlaylist" style="position: fixed; bottom: 5%; right: 85%; width: 12%;" placeholder="Nueva Playlist">
+    <input name= "NombrePlaylist" class="form-control" type="text" id="NombrePlaylist" style="position: fixed; bottom: 42%; right: 80%; width: 12%;" placeholder="Nueva Playlist">
 </form>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<h2 style= "position: fixed; bottom: 30%; right: 76;"> Eliminar de Playlist</h2>
+
+<form action="/gestionBiblioteca/eliminar" method ="POST">
+
+    <select contenteditable = "true" name = "txtIdVideoEliminarName" id="txtIdVideoEliminar" style= "position: fixed; bottom: 24%; right: 42%; width: 50%">
+    {{#each rows2}}
+        <option value="{{id_video}}"> {{id_video}}</option>
+    {{/each}}
+    </select>
+
+    <div class="form-group">
+        <button type="submit" class= "btn btn-primary btn-block" style= "position: fixed; bottom: 17%; right: 30%; width: 100px;">
+            Eliminar
+        </button>
+    </div>
+
+    <select contenteditable = "true" name = "txtListaReproduccionEliminarName" id="txtListaReproduccionEliminar" style= "position: fixed; bottom: 17%; right: 42%; width: 50%">
+    {{#each rows1}}
+        <option value="{{nombre}}"> {{nombre}}</option>
+    {{/each}}
+    </select>
+</form>
 </html>
 
  
