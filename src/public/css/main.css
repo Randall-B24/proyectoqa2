@@ -1,3 +1,7 @@
+/*
+Formato de color para todas las páginas del sitio web
+*/
+
 body{
 	background: rgb(168, 241, 237);
 background: radial-gradient(circle, rgb(176, 225, 238) 0%, rgb(135, 250, 240) 51%, rgba(213, 137, 230, 0.992) 100%);

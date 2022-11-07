@@ -16,6 +16,7 @@
         </div>
     </form>
     
+    <!--Botones para redireccionar a las páginas principales-->
     </br>
     <a style= "position: fixed; bottom: 75%; right: 75%; width: 300px;" href= "http://localhost:3000/gestionMultimedia" class="btn btn-primary btn-lg">Gestión Multimedia</a>
     <a style= "position: fixed; bottom: 75%; right: 53%; width: 300px;" href= "http://localhost:3000/gestionBiblioteca" class="btn btn-primary btn-lg">Gestión Biblioteca</a>
@@ -27,7 +28,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div id="videos">
+            <div id="videos"> <!-- Elemento para agregar los videos de la busqueda-->
 
             </div>
         </div>
@@ -35,12 +36,12 @@
 </div>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> <!-- src para realizar la busqueda de videos-->
 </html>
 
 <script>
   $(document).ready(function () {
-    var API_KEY = "AIzaSyC0-N_PiUe-GoKbCCDSJPB_KG-SK53SE-s";
+    var API_KEY = "AIzaSyC0-N_PiUe-GoKbCCDSJPB_KG-SK53SE-s"; //Llave del api de google
 
     var video = ''
 
@@ -49,20 +50,20 @@
 
         var search = $("#search").val()
 
-        videosSearch(API_KEY,search,12)
+        videosSearch(API_KEY,search,12) 
 
     })
 
     function videosSearch(key, search, maxResults){
       document.getElementById("videos").innerHTML = "";
       $.get("https://www.googleapis.com/youtube/v3/search?key=" + key
-      + "&type=video&part=snippet&maxResults=" + maxResults + "&q=" + search, function(data){
+      + "&type=video&part=snippet&maxResults=" + maxResults + "&q=" + search, function(data){ //Query para hacer la consulta al video 
         console.log(data)
 
         data.items.forEach(item => {
 	    console.log(item.id.videoId)
 	    video = `<iframe width="410" height="315" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>`
-            $("#videos").append(video)
+            $("#videos").append(video) //Agregar videos al elemento
         });
       })
     }

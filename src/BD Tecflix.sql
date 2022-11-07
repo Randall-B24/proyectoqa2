@@ -38,25 +38,6 @@ on delete cascade
 on update cascade
 );
 
-insert into Multimedia values('eIjbSH3Imb8','https://www.youtube.com/watch?v=eIjbSH3Imb8','Prueba','Pablo');
-insert into Multimedia values('jqBuXibX9CM','https://www.youtube.com/watch?v=jqBuXibX9CM','Prueba','Randall');
-
-select * from Multimedia;
-
-
-insert into ListaReproduccion values ('prueba1');
-insert into ListaReproduccion values ('prueba2');
-
-insert into Lista_Video values ('jqBuXibX9CM', 'prueba1');
-insert into Lista_Video values ('eIjbSH3Imb8', 'prueba2');
-
-select * from Lista_Video;
-
-Select LV.id_video, titulo from Lista_Video as LV JOIN ListaReproduccion as LR on LV.nombre_lista = LR.nombre JOIN Multimedia as M on M.id_video = LV.id_video WHERE nombre = 'prueba4';
-insert into ListaReproduccion values ('prueba3');
-
-insert into Multimedia values (?, ?, ?, ?);
-insert into Lista_Video values ('ID_VIDEO', 'NOMBRE_PLAYLIST');
-
-alter table Multimedia 
-modify link varchar(100);
+#Usar contraseña de MySQL
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+flush privileges;

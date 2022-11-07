@@ -8,6 +8,7 @@
 <a style= "position: fixed; bottom: 89%; right: 90%; width: 100px;" href= "http://localhost:3000" class="btn btn-primary btn-block"> Regresar </a>
 
 <div class="container">
+    <!-- Form para visualizar los videos de una playlist-->
     <form action="/visualizacionBiblioteca/buscar" method ="POST">
         <input name= "playList" class="form-control" type="text" id="search" style=" position: fixed; bottom: 89%; width: 50%; right: 20%;" value= {{playList}} required>
         <div class="form-group">
@@ -22,7 +23,7 @@
         <div class="card">
             <div class="card-body">
                 {{#each rows}}
-                    <p>{{titulo}}</p>
+                    <p>{{titulo}}</p> <!-- Titulo de los videos de la base de datos-->
                 {{/each}}            
             </div>
         </div>
@@ -32,7 +33,7 @@
         <div class="col-md-12">
             <div id="videos">
                 {{#each rows}}
-                    <iframe width="350" height="350" src="https://www.youtube.com/embed/{{id_video}}" frameborder="0" allowfullscreen> </iframe>
+                    <iframe width="350" height="350" src="https://www.youtube.com/embed/{{id_video}}" frameborder="0" allowfullscreen> </iframe> <!-- Insertar los videos al elemento-->
                 {{/each}}
             </div>
         </div>

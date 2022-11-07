@@ -11,11 +11,23 @@
 
 <h2 style= "position: fixed; bottom: 75%; right: 76;"> Agregar a Playlist</h2>
 
+
+<script>
+    if({{validar}} == 1){
+        window.alert("Se agregó correctamente el video a la lista de reproducción");
+    }
+    else{
+        window.alert("Se eliminó correctamente el video a la lista de reproducción");
+    }
+</script>
+
+<!-- Form para agregar videos a una playlist-->
+
 <form action="/gestionBiblioteca/agregar" method ="POST">
 
     <select contenteditable = "true" name = "txtIdVideoAgregarName" id="txtIdVideoAgregar" style= "position: fixed; bottom: 67%; right: 42%; width: 50%">
     {{#each rows2}}
-        <option value="{{id_video}}"> {{id_video}}</option>
+        <option value="{{id_video}}"> {{id_video}}</option> <!-- Id de los videos de la base de datos-->
     {{/each}}
     </select>
 
@@ -27,13 +39,13 @@
 
     <select contenteditable = "true" name = "txtListaReproduccionAgregarName" id="txtListaReproduccionAgregar" style= "position: fixed; bottom: 60%; right: 42%; width: 50%">
     {{#each rows1}}
-        <option value="{{nombre}}"> {{nombre}}</option>
+        <option value="{{nombre}}"> {{nombre}}</option> <!-- Nombre de las playlist de la base de datos-->
     {{/each}}
     </select>
 </form>
 
 <h4 style= "position: fixed; bottom: 50%; right: 76%;"> Agregar Nueva Playlist</h4>
-
+<!-- Form para agregar una nueva playlist-->
 <form action="/gestionBiblioteca/agregarPlaylist" method ="POST">
     <div class="form-group">
         <button type="submit" class= "btn btn-primary btn-block" style= "position: fixed; bottom: 42%; right: 65%; width: 170px;">
@@ -45,11 +57,14 @@
 
 <h2 style= "position: fixed; bottom: 30%; right: 76;"> Eliminar de Playlist</h2>
 
+
+<!-- Form para eliminar video de una playlist-->
+
 <form action="/gestionBiblioteca/eliminar" method ="POST">
 
     <select contenteditable = "true" name = "txtIdVideoEliminarName" id="txtIdVideoEliminar" style= "position: fixed; bottom: 24%; right: 42%; width: 50%">
     {{#each rows2}}
-        <option value="{{id_video}}"> {{id_video}}</option>
+        <option value="{{id_video}}"> {{id_video}}</option> <!-- Id de los videos de la base de datos-->
     {{/each}}
     </select>
 
@@ -61,7 +76,7 @@
 
     <select contenteditable = "true" name = "txtListaReproduccionEliminarName" id="txtListaReproduccionEliminar" style= "position: fixed; bottom: 17%; right: 42%; width: 50%">
     {{#each rows1}}
-        <option value="{{nombre}}"> {{nombre}}</option>
+        <option value="{{nombre}}"> {{nombre}}</option> <!-- Nombre de las playlist de la base de datos-->
     {{/each}}
     </select>
 </form>

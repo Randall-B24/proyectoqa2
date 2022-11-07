@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<script src="https://www.youtube.com/player_api"></script>
+<script src="https://www.youtube.com/player_api"></script> <!-- script para la busqueda-->
 
 </br>
 </br>
@@ -12,6 +12,8 @@
 
 <input name= "Aux" class="form-control" type="text" id="Aux" value= {{lista}} style= "position: fixed; bottom: 89%; width: 40%; right: 20%;" > </input>
 
+
+<!-- Elementos para los distintos videos de la cola-->
 
 <div id="video-youtube1" style= "position: fixed; bottom: 35%; right: 50%;"> </div>
 <div id="video-youtube2" style= "position: fixed; bottom: 35%; right: 50%;"></div>
@@ -32,6 +34,7 @@
 
 
 <div class="container">
+    <!-- Form para la busqueda de las playlist-->
     <form action="/listasReproduccion/buscar" method ="POST">
         <input name= "playList" class="form-control" type="text" id="search" style=" position: fixed; bottom: 89%; width: 50%; right: 20%;" placeholder="Nombre PlayList" required>
         <div class="form-group">
@@ -45,7 +48,7 @@
         <div class="card">
             <div class="card-body">
                 {{#each rows}}
-                    <p>{{titulo}}</p>
+                    <p>{{titulo}}</p> <!-- Titulos de los videos de la cola-->
                 {{/each}}            
             </div>
         </div>
@@ -53,7 +56,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div id="videos">
+            <div id="videos"> <!-- Elemento para agregar los videos-->
 
             </div>
         </div>
@@ -62,7 +65,7 @@
 </div>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> <!-- src para realizar la busqueda de videos-->
 
 </html>
 
@@ -80,19 +83,20 @@
         var temporal;
         var nuevoAux;
         temporal = $("#Aux").val();
+        //Id del video a reproducir
         lista = temporal[0] + temporal[1] + temporal[2] + temporal[3] + temporal[4] + temporal[5] + temporal[6] + temporal[7] + temporal[8] + temporal[9] + temporal[10];  
         if (temporal.length == 11){
             nuevoAux = "";
         }
         else{
-            nuevoAux = temporal.substring(11, temporal.length);
+            nuevoAux = temporal.substring(11, temporal.length); //Cortar cola de reproducción
         }
         $("#Aux").val(nuevoAux);
         console.log(nuevoAux);
 
         Id = nombreId + i.toString();
         i = i + 1;
-        player = new YT.Player(Id, {
+        player = new YT.Player(Id, { //Crear nuevo objeto de reproducción
             height: '350',
             width: '600',
             videoId: lista,
@@ -113,19 +117,20 @@
             var temporal;
             var nuevoAux;
             temporal = $("#Aux").val();
+            //Id del video a reproducir
             lista = temporal[0] + temporal[1] + temporal[2] + temporal[3] + temporal[4] + temporal[5] + temporal[6] + temporal[7] + temporal[8] + temporal[9] + temporal[10];  
             if (temporal.length == 11){
                 nuevoAux = "";
             }
             else{
-                nuevoAux = temporal.substring(11, temporal.length);
+                nuevoAux = temporal.substring(11, temporal.length); //Cortar cola de reproducción
             }
             $("#Aux").val(nuevoAux);
             console.log(lista);
             
             Id = nombreId + i.toString();
             i = i + 1;
-            player = new YT.Player(Id, {
+            player = new YT.Player(Id, { //Crear nuevo objeto de reproducción
             height: '350',
             width: '600',
             videoId: lista,
@@ -140,44 +145,4 @@
     }
 );
 </script>
-
-<script>
-    /*
-  $(document).ready(function () {
-    var API_KEY = "AIzaSyC0-N_PiUe-GoKbCCDSJPB_KG-SK53SE-s";
-    var video = ''
-    var datos = ''
-
-    $("#reproducir").submit(function(event){
-        event.preventDefault()
-
-        var search = $("#search").val()
-
-        var id = search[32] + search[33] + search[34] + search[35] + search[36] + search[37] + search[38] + search[39] + search[40] + search[41] + search[42]
-
-        console.log("Link:" + search, "   ID:" + id)
-
-        videosSearch(API_KEY,id)
-
-    })
-
-    function videosSearch(key, id){
-      document.getElementById("videos").innerHTML = "";
-      
-      $.get("https://www.googleapis.com/youtube/v3/videos?&type=video&part=snippet&id=" + id + "&key=" + key, function(data){
-        console.log(data)
-
-        data.items.forEach(item => {
- 
-
-            video = `<iframe width="700" height="450" src="https://www.youtube.com/embed/${id}" frameborder="0" allowfullscreen></iframe>`
-            $("#videos").append(video)
-        });
-      })
-    }
-  }
-);*/
-</script>
-
-
 
